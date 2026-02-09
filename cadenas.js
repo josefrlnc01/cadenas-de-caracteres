@@ -56,4 +56,26 @@ function encontrarOcurrenciaYModificar (cadena, subcadena) {
 }
 
 
+function contarNumeroDeOcurrencias (sub1,cadena) {
+    let contadorOcurrencias = 0
+  
+    for (let i = 0; i < cadena.length; i++) {
+        let ocurrencia = true
+        for (let j = 0; j < sub1.length; j++) {
+            if (cadena[i + j] !== sub1[j]) {
+                ocurrencia = false
+            }
+        }
 
+        if (ocurrencia) {
+            contadorOcurrencias++
+        }
+    }
+
+    return {
+        contadorOcurrencias
+    }
+}
+
+
+console.log(contarNumeroDeOcurrencias('ene', 'penelopenero'))
