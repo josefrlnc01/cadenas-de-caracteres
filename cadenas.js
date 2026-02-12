@@ -26,8 +26,8 @@ function estanEnOrdenAlfabetico (char1, char2) {
 }
 
 
-console.log(estanEnOrdenAlfabetico('c', 'B'))
-  let cadena = 'hola mundo'
+
+let cadena = 'hola mundo'
 
 function encontrarOcurrenciaYModificar (cadena, subcadena) {
     let nuevaCadena = ''
@@ -163,6 +163,83 @@ function generadorDePassword (longitud) {
 }
 
 const pass = generadorDePassword(15)
+
+
+
+function eliminarLetras (palabra, letras) {
+    let nuevaPalabra = ''
+    for (let i = 0; i < palabra.length; i++) {
+        let esIgual = false
+        for (let j = 0; j < letras.length; j++) {
+            console.log(palabra[i])
+            if (letras[j] === palabra[i]) {
+                esIgual = true
+            }  
+        }
+        if (esIgual) {
+            continue
+        } else {
+            nuevaPalabra += palabra[i]
+        }
+    }
+    return nuevaPalabra
+}
+
+
+
+
+
+function romanos (num) {
+        let res = {
+        texto: ''
+    }
+
+    procesarNumero(num, 1000, 'M', '', '', res)
+    procesarNumero(num, 100, 'C', 'D', 'M', res)
+    procesarNumero(num, 10, 'X', 'L', 'C', res)
+    procesarNumero(num, 1, 'I', 'V', 'X', res)
+
+    return res.texto
+
+}
+
+
+function procesarNumero (num, divisor, uno, cinco, diez, res) {
+    let cociente = Math.floor(num / divisor)
+    let digito = cociente % 10
+
+    if (digito === 9) {
+        res.texto += uno + diez
+    } else if (digito > 5) {
+        res.texto += cinco + uno.repeat(digito - 5)
+    } else if (digito === 4) {
+        res.texto += uno + cinco
+    } else {
+        res.texto += uno.repeat(digito)
+    }
+
+}
+
+
+function cambiarNumeroDeBase (num, base) {
+    let nuevoNumeroEnBaseEspecifica = []
+    let comparador = num
+    while (comparador > 0) {
+        let resto = 0
+        resto = comparador % base
+        comparador = Math.floor(comparador / base)
+        nuevoNumeroEnBaseEspecifica.push(resto)
+    }
+    return nuevoNumeroEnBaseEspecifica.reverse().join('')
+}
+
+
+function esPalindromo (cadena) {
+    return cadena.split('').reverse().join('') === cadena.split('').join('')
+}
+
+
+
 
 
 
